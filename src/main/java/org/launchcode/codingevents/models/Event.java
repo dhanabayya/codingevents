@@ -21,6 +21,8 @@ public class Event {
     @Email(message = "Invalid email. Try again.")
     private String contactEmail;
 
+    public Event(){
+    }
 
     public Event(String name, String description, String contactEmail) {
         this.name = name;
