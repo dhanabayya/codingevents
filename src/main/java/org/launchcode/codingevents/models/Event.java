@@ -1,19 +1,12 @@
 package org.launchcode.codingevents.models;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-import java.util.Objects;
 @Entity
-public class Event {
-    @Id
-    @GeneratedValue
-    private int id;
-    private static int nextId = 1;
+public class Event extends AbstractEntity{
 
     @NotBlank(message = "Name is required.")
     @Size(min = 3, max = 25, message = "name must be between 3 and 25 characters.")
@@ -61,10 +54,6 @@ public class Event {
         this.contactEmail = contactEmail;
     }
 
-    public int getId() {
-        return id;
-    }
-
     @Override
     public String toString() {
         return name;
@@ -76,18 +65,5 @@ public class Event {
 
     public void setType(EventType type) {
         this.type = type;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Event event = (Event) o;
-        return id == event.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
     }
 }
